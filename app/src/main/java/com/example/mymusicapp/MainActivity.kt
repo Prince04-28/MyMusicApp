@@ -4,17 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.mymusicapp.ui.theme.MyMusicAppTheme
+import com.example.mymusicapp.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +21,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-fun Composable(string: String, function: Any) {
+fun Composable(string: String, function: @Composable Any) {
 
 
 }
@@ -41,22 +36,28 @@ fun NavHost() {
 
 }
 
+
+
+
 @Composable
-fun AppNavHost(){
-    val navController= rememberNavController()
+fun AppNavHost() {
+    val navController = rememberNavController()
 
-    val navHost = NavHost().NavHost(navController = navController)
-    var StartDestination = "Home"
-    val function =
-        { //Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
-            Composable("Home") { HomeScreen }
-            Composable("Second") { SecondScreen }
-
-        }
-
-
+    NavHost(navController = navController, startDestination = "Home") {
+        composable("Home") { HomeScreen(navController) }
+        composable("Second") { SecondScreen(navController) }
+    }
 }
 
+@Composable
+fun HomeScreen(x0: NavHostController) {
+    TODO("Not yet implemented")
+}
+
+@Composable
+fun SecondScreen(x0: NavHostController) {
+    TODO("Not yet implemented")
+}
 
 
 
